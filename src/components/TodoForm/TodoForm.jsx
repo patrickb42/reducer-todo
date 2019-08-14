@@ -2,18 +2,30 @@ import React, { useEffect, useContext } from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
+import { TodosContext } from '../../contexts'
+
 const TodoForm = ({ values, errors, touched, status }) => {
+  const { state, dispatch, todosAction } = useContext(TodosContext);
+
   useEffect(() => {
-    console.log(status);
-  }, [status]);
+    if (status === undefined) return;
+    console.log(status.task);
+    dispatch({
+      type: todosAction.ADD_TODO,
+      payload: {
+        id: Date.now(),
+        task: status.task,
+      }
+    })
+  }, [status, dispatch, todosAction.ADD_TODO]);
 
   return (<>
     <Form>
       {errors.task && touched.task && <p>{errors.task}</p>}
       <Field type="text" name="task" placeholder="Task" />
       <button type="submit">Add Taks</button>
-      <button onClick={() => {}}>Clear Completed</button>
     </Form>
+    <button onClick={() => {}}>Clear Completed</button>
   </>);
 };
 
