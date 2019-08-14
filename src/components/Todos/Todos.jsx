@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 
 import { TodosContext } from '../../contexts';
+import { TOGGLE_TODO_COMPLETED } from '../../reducers/TodosReducer'
 import Todo from '../Todo';
 
 const Todos = () => {
-  const { state, dispatch, TOGGLE_TODO_COMPLETED } = useContext(TodosContext);
+  const { state, dispatch } = useContext(TodosContext);
 
   return (<>
     <div>

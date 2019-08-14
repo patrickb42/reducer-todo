@@ -3,9 +3,10 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { TodosContext } from '../../contexts'
+import { ADD_TODO, REMOVE_COMPLETED_TODOS } from '../../reducers/TodosReducer'
 
 const TodoForm = ({ values, errors, touched, status }) => {
-  const { dispatch, ADD_TODO, REMOVE_COMPLETED_TODOS } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
 
   useEffect(() => {
     if (status === undefined) return;
@@ -17,7 +18,7 @@ const TodoForm = ({ values, errors, touched, status }) => {
         task: status.task,
       }
     })
-  }, [status, dispatch, ADD_TODO]);
+  }, [status, dispatch]);
 
   return (<>
     <Form>

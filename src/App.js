@@ -3,7 +3,7 @@ import React, { useReducer } from 'react';
 import './App.css';
 
 import { TodosContext } from './contexts';
-import { todosReducer, todosInitalState, todosAction } from './reducers/TodosReducer';
+import { todosReducer, todosInitalState } from './reducers/TodosReducer';
 import TodoForm from './components/TodoForm/TodoForm';
 import Todos from './components/Todos/Todos';
 
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <TodosContext.Provider value={{ state, dispatch, todosAction }} >
+      <TodosContext.Provider value={{ state, dispatch }} >
         <TodoForm />
         <Todos />
       </TodosContext.Provider>
