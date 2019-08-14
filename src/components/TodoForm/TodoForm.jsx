@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { TodosContext } from '../../contexts'
 
 const TodoForm = ({ values, errors, touched, status }) => {
-  const { state, dispatch, todosAction } = useContext(TodosContext);
+  const { dispatch, todosAction } = useContext(TodosContext);
 
   useEffect(() => {
     if (status === undefined) return;
@@ -23,9 +23,17 @@ const TodoForm = ({ values, errors, touched, status }) => {
     <Form>
       {errors.task && touched.task && <p>{errors.task}</p>}
       <Field type="text" name="task" placeholder="Task" />
-      <button type="submit">Add Taks</button>
+      <button type="submit">Add Task</button>
     </Form>
-    <button onClick={() => {}}>Clear Completed</button>
+    <button
+      onClick={() => {
+        dispatch({
+          type: todosAction.REMOVE_COMPLETED_TODOS,
+        });
+      }}
+    >
+      Clear Completed
+    </button>
   </>);
 };
 

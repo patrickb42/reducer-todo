@@ -1,26 +1,15 @@
 const ADD_TODO = 'ADD_TODO';
 const TOGGLE_TODO_COMPLETED = 'TOGGLE_TODO_COMPLETED';
-const REMOVE_TODO = 'REMOVE_TODO';
+const REMOVE_COMPLETED_TODOS = 'REMOVE_COMPLETED_TODOS';
 
 export const todosAction = {
   ADD_TODO,
   TOGGLE_TODO_COMPLETED,
-  REMOVE_TODO,
+  REMOVE_COMPLETED_TODOS,
 }
 
 export const todosInitalState = {
-  todos: [
-    {
-      id: 1,
-      task: 'one',
-      completed: true,
-    },
-    {
-      id: 2,
-      task: 'two',
-      completed: false,
-    }
-  ],
+  todos: [],
 };
 
 export const todosReducer = (state, action) => {
@@ -42,11 +31,13 @@ export const todosReducer = (state, action) => {
           };
         }),
       };
-      case REMOVE_TODO:
-        return {
-          ...state,
-          todos: state.todos.filter(todo => todo.id !== action.payload),
-        };
+    case REMOVE_COMPLETED_TODOS:
+      console.log('line 46');
+      
+      return {
+        ...state,
+        todos: state.todos.filter(todo => !todo.completed),
+      };
     default:
       throw new Error(`${action.type} is not a valid action`);
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({ task, id, completed, handleClick }) => {
+const Todo = ({ task, completed, handleClick }) => {
   return (<>
     <div
       className={completed ? 'completed' : ''}
