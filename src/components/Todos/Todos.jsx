@@ -4,7 +4,7 @@ import { TodosContext } from '../../contexts';
 import Todo from '../Todo';
 
 const Todos = () => {
-  const { state, dispatch, todosAction } = useContext(TodosContext);
+  const { state, dispatch, TOGGLE_TODO_COMPLETED } = useContext(TodosContext);
 
   return (<>
     <div>
@@ -14,7 +14,7 @@ const Todos = () => {
           {...todo}
           handleClick={() => {
             dispatch({
-              type: todosAction.TOGGLE_TODO_COMPLETED,
+              type: TOGGLE_TODO_COMPLETED,
               payload: todo.id,
             })
           }}

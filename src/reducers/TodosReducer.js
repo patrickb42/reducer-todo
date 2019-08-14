@@ -1,12 +1,6 @@
-const ADD_TODO = 'ADD_TODO';
-const TOGGLE_TODO_COMPLETED = 'TOGGLE_TODO_COMPLETED';
-const REMOVE_COMPLETED_TODOS = 'REMOVE_COMPLETED_TODOS';
-
-export const todosAction = {
-  ADD_TODO,
-  TOGGLE_TODO_COMPLETED,
-  REMOVE_COMPLETED_TODOS,
-}
+export const ADD_TODO = 'ADD_TODO';
+export const TOGGLE_TODO_COMPLETED = 'TOGGLE_TODO_COMPLETED';
+export const REMOVE_COMPLETED_TODOS = 'REMOVE_COMPLETED_TODOS';
 
 export const todosInitalState = {
   todos: [],

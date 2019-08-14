@@ -5,19 +5,19 @@ import * as Yup from 'yup';
 import { TodosContext } from '../../contexts'
 
 const TodoForm = ({ values, errors, touched, status }) => {
-  const { dispatch, todosAction } = useContext(TodosContext);
+  const { dispatch, ADD_TODO, REMOVE_COMPLETED_TODOS } = useContext(TodosContext);
 
   useEffect(() => {
     if (status === undefined) return;
     console.log(status.task);
     dispatch({
-      type: todosAction.ADD_TODO,
+      type: ADD_TODO,
       payload: {
         id: Date.now(),
         task: status.task,
       }
     })
-  }, [status, dispatch, todosAction.ADD_TODO]);
+  }, [status, dispatch, ADD_TODO]);
 
   return (<>
     <Form>
@@ -28,7 +28,7 @@ const TodoForm = ({ values, errors, touched, status }) => {
     <button
       onClick={() => {
         dispatch({
-          type: todosAction.REMOVE_COMPLETED_TODOS,
+          type: REMOVE_COMPLETED_TODOS,
         });
       }}
     >
